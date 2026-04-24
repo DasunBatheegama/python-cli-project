@@ -1,1 +1,42 @@
-[]
+[
+	{
+		"id": 1,
+		"name": "Dasun Malinda Batheegama",
+		"age": 16,
+		"grade": "10",
+		"email": "dasun@gmail.com",
+		"phone": "0771234567"
+	},
+	{
+		"id": 2,
+		"name": "Kavindu Perera",
+		"age": 15,
+		"grade": "9",
+		"email": "kavindu.perera@example.com",
+		"phone": "0771234567"
+	},
+	{
+		"id": 3,
+		"name": "Randula Perera",
+		"age": 17,
+		"grade": "11",
+		"email": "randula.perera@example.com",
+		"phone": "076123456"
+	},
+	{
+		"id": 4,
+		"name": "Nimal pasindu",
+		"age": 14,
+		"grade": "8",
+		"email": "nimal.pasindu@example.com",
+		"phone": "072123564"
+	},
+	{
+		"id": 5,
+		"name": "Sanduni Perera",
+		"age": 16,
+		"grade": "10",
+		"email": "sanduni.perera@example.com",
+		"phone": "0771234567"
+	}
+]
