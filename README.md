@@ -16,7 +16,12 @@ Build a basic Python command-line application to manage student records in an or
 
 ## Technologies Used
 - Python 3
+- Built-in modules: json, pathlib
 
 ## How to Run
 1. Open terminal in the project folder.
 2. Run: python main.py
+
+## Data Storage
+- Student records are stored in data/students.json.
+- The file is created automatically on first run.

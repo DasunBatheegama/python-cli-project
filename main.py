@@ -1,3 +1,30 @@
+from pathlib import Path
+import json
+
+
+DATA_DIR = Path("data")
+DATA_FILE = DATA_DIR / "students.json"
+
+
+def ensure_storage():
+    DATA_DIR.mkdir(exist_ok=True)
+    if not DATA_FILE.exists():
+        DATA_FILE.write_text("[]", encoding="utf-8")
+
+
+def load_students():
+    ensure_storage()
+    try:
+        return json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def save_students(students):
+    ensure_storage()
+    DATA_FILE.write_text(json.dumps(students, indent=2), encoding="utf-8")
+
+
 def input_non_empty(prompt, default=None):
     while True:
         value = input(prompt).strip()
@@ -50,6 +77,7 @@ def add_student(students):
         "phone": input_non_empty("Phone: "),
     }
     students.append(student)
+    save_students(students)
     print("Student added successfully.")
 
 
@@ -108,6 +136,7 @@ def update_student(students):
     student["email"] = input_non_empty(f'Email [{student["email"]}]: ', student["email"])
     student["phone"] = input_non_empty(f'Phone [{student["phone"]}]: ', student["phone"])
 
+    save_students(students)
     print("Student updated successfully.")
 
 
@@ -128,6 +157,7 @@ def delete_student(students):
         return
 
     students.remove(student)
+    save_students(students)
     print("Student deleted successfully.")
 
 
@@ -143,7 +173,7 @@ def show_menu():
 
 
 def main():
-    students = []
+    students = load_students()
 
     while True:
         show_menu()
@@ -160,8 +190,10 @@ def main():
         elif choice == "5":
             delete_student(students)
         elif choice == "6":
-            print("In-memory version. File save will be added in next commit.")
+            save_students(students)
+            print("Records saved successfully.")
         elif choice == "7":
+            save_students(students)
             print("Goodbye.")
             break
         else:
